@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Job Application Tracker</h1>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li class="active" data-section="dashboard">Dashboard</li>
+            <li data-section="applications">Applications</li>
+            <li data-section="interviews">Interviews</li>
+            <li data-section="offers">Offers</li>
+            <li data-section="settings">Settings</li>
+        </ul>
+    </nav>
+
+    <main>
+
+      
+       <!-- DASHBOARD -->
+<section id="dashboard" class="page active-page">
+    <h2>Dashboard Overview</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Applications</h3>
+            <p id="totalApplied">0</p>
+        </div>
+        <div class="card">
+            <h3>Interviews Scheduled</h3>
+            <p id="totalInterviews">0</p>
+        </div>
+        <div class="card">
+            <h3>Offers Received</h3>
+            <p id="totalOffers">0</p>
+        </div>
+        <div class="card">
+            <h3>Rejected</h3>
+            <p id="totalRejected">0</p>
+        </div>
+    </div>
+
+    <br><br>
+
+    <!-- CHARTS CONTAINER -->
+    <div class="charts-container">
+
+        <div class="chart-box">
+            <h3 style="text-align:center;">Application Status</h3>
+            <canvas id="statusChart"></canvas>
+        </div>
+
+        <div class="chart-box">
+            <h3 style="text-align:center;">Application Overview</h3>
+            <canvas id="barChart"></canvas>
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- APPLICATIONS -->
+        <section id="applications" class="page">
+            <h2>All Job Applications</h2>
+
+            <div class="content-box">
+
+                <form id="jobForm">
+                    <input type="text" id="company" placeholder="Company Name" required>
+                    <input type="text" id="role" placeholder="Job Role" required>
+                    <input type="text" id="location" placeholder="Location" required>
+                    <input type="date" id="date" required>
+
+                    <select id="status" required>
+                        <option value="">Select Status</option>
+                        <option>Applied</option>
+                        <option>Interview</option>
+                        <option>Offer</option>
+                        <option>Rejected</option>
+                    </select>
+
+                    <textarea id="notes" placeholder="Notes"></textarea>
+
+                    <button type="submit">Add Application</button>
+                </form>
+
+                <br>
+
+                <!-- SEARCH + FILTER -->
+                <div style="display:flex; gap:15px; margin:15px 0; flex-wrap:wrap;">
+                    <input type="text" id="searchInput" placeholder="Search by Company Name..." style="padding:8px; width:250px;">
+                    <select id="statusFilter" style="padding:8px; width:180px;">
+                        <option value="All">All Status</option>
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Offer">Offer</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Role</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applicationTable"></tbody>
+                </table>
+
+            </div>
+        </section>
+
+        <!-- INTERVIEWS -->
+        <section id="interviews" class="page">
+            <h2>Interview Applications</h2>
+            <div class="content-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Role</th>
+                            <th>Date</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="interviewTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- OFFERS -->
+        <section id="offers" class="page">
+            <h2>Offers Received</h2>
+            <div class="content-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Role</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="offerTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section id="settings" class="page">
+            <h2>Settings</h2>
+            <div class="content-box">
+                <button id="darkModeBtn">Toggle Dark Mode</button>
+                <br><br>
+                <button id="clearBtn" style="background:red; color:white; padding:8px 15px; border:none; border-radius:6px;">
+                    Clear All Data
+                </button>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- CHART.JS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- YOUR JS FILE -->
+<script src="script.js"></script>
+
+</body>
+</html>
